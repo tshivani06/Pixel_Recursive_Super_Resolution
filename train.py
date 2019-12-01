@@ -156,7 +156,7 @@ for e in range(num_epoch):
     loss.backward()
     optimizer.step()
     print("Epoch: {}  Loss: {}".format(e+1, loss))
-    w_file.write(str(e+1)+"\t"+str(loss.data[0])+"\n")
+    w_file.write(str(e+1)+"\t"+str(loss.item())+"\n")
     w_file.close()
     
 
