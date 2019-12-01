@@ -58,6 +58,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr= 0.001)
 criterion = nn.CrossEntropyLoss()
 
 train_iter = iter(train_loader)
+w_file = open("log.txt", "w")
+w_file.write("Epoch\tLoss\n")
 for e in range(num_epoch):
     try:
         inputs, _ = next(train_iter)
@@ -154,6 +156,9 @@ for e in range(num_epoch):
     loss.backward()
     optimizer.step()
     print("Epoch: {}  Loss: {}".format(e+1, loss))
+    w_file.write(str(e+1)+"\t"+str(loss)+"\n")
+w_file.close()
+    
 
     
 
